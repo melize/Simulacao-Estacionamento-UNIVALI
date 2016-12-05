@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package estacionamentounivali;
 
 import estacionamento.Carro;
 
-/**
- *
- * @author lokux
- */
 public class Saindo extends Thread {
 
     int bloco;
@@ -24,13 +15,13 @@ public class Saindo extends Thread {
     @Override
     public void run() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(10);
         } catch (InterruptedException ex) {
         }
         Carro carro = new Carro(bloco);
         for (int i = 0; i < qtdEntradas; i++) {
-                Simulação.estacionamento.sair(bloco);
-            
+            Simulação.estacionamento.sair(bloco);
+
         }
     }
 

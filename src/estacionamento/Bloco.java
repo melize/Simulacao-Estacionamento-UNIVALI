@@ -12,8 +12,8 @@ package estacionamento;
 public class Bloco {
     int ID;
     char nomenclatura;
-    int vagas;
-    int carrosEstacionados = 0;
+    public int vagas;
+    public int carrosEstacionados = 0;
 
     public Bloco(int ID, char nomenclatura, int vagas) {
         this.ID = ID;

@@ -1,25 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package estacionamentounivali;
 
 import estacionamento.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author lokux
- */
-public class Simulação {
+public class Simulação{
 
     public static Estacionamento estacionamento;
+    FileWriter arq;
+    public static PrintWriter gravarArq;
+
 
     public Simulação() {
+        try {
+            arq = new FileWriter("C:\\Users\\3768210\\Documents\\GitHub\\Simulacao-Estacionamento-UNIVALI\\saidas.txt");
+        } catch (IOException ex) {
+        }
+        gravarArq = new PrintWriter(arq);
         List<Bloco> blocos = new ArrayList(6);
         Bloco bloco = new Bloco(0, 'A', 11);
         blocos.add(bloco);
@@ -34,6 +36,7 @@ public class Simulação {
         bloco = new Bloco(0, 'F', 426);
         blocos.add(bloco);
         estacionamento = new Estacionamento(1152, blocos);
+
     }
 
     public void simularmatutino() {
@@ -51,7 +54,7 @@ public class Simulação {
         estacionandor = new Estacionando(5, 253);
         estacionando.add(estacionandor);
 
-        for (int i = 0; i < estacionando.size(); i++) {
+        for (int i = 5; i >= 0; i--) {
             estacionando.get(i).run();
         }
         for (int i = 0; i < estacionando.size(); i++) {
@@ -85,6 +88,8 @@ public class Simulação {
             }
         }
         System.out.println("Simulação Matutina Finalizada");
+        System.out.println("");
+                                Simulação.gravarArq.println(" ");
     }
 
     public void simularnoturno() {
@@ -102,7 +107,7 @@ public class Simulação {
         estacionandor = new Estacionando(5, 313);
         estacionando.add(estacionandor);
 
-        for (int i = 0; i < estacionando.size(); i++) {
+        for (int i = 5; i >= 0; i--) {
             estacionando.get(i).run();
         }
         for (int i = 0; i < estacionando.size(); i++) {
